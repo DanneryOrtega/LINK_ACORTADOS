@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block titulo%}
+Lista
+{% endblock %}
+
+{% block contenido %}
+
+
+    <table class="table table-bordered table-dark mt-1">
+        <thead >
+            <th>LINK</th>
+            <th>LINK ACORTADO</th>
+            <th>ACCIONES</th>
+        </thead>
+        <tbody>
+            {%for registro in registros%}
+                <tr>
+                    <td>{{registro[2]}}</td>
+                    <td>http://127.0.0.1:5000/{{registro[1]}}</td>
+                    <td>
+                        <a href="{{url_for('editar',id=registro[0])}}">Editar</a>
+                        <a href="{{url_for('eliminar',id=registro[0])}}">Eliminar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+{% endblock %}
